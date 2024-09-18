@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ratings
+spec:
+  containers:
+  - name: ratings
+    image: istio/examples-bookinfo-ratings-v1
+    ports:
+    - containerPort: 9080

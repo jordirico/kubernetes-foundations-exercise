@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: reviews
+spec:
+  containers:
+  - name: reviews
+    image: istio/examples-bookinfo-reviews-v2
+    env:
+    - name: RATINGS_HOSTNAME
+      value: "10.244.0.23"
+    - name: RATINGS_PORT
+      value: "9080"
+    ports:
+    - containerPort: 9080

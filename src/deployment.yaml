@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews
+  labels:
+    app: reviews
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reviews
+  template:
+    metadata:
+      labels:
+        app: reviews
+    spec:
+      containers:
+      - name: reviews
+        image: istio/examples-bookinfo-reviews-v3
+        env:
+        - name: RATINGS_HOSTNAME
+          value: "10.244.0.23"
+        - name: RATINGS_PORT
+          value: "9080"
+        ports:
+        - containerPort: 9080
